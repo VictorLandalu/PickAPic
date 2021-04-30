@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "339489684748",
+    "project_id": "pickapic-landalu",
+    "storage_bucket": "pickapic-landalu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339489684748:android:a5e9c75dbdd870ade65d29",
+        "android_client_info": {
+          "package_name": "com.landalu.pickapic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339489684748-tm4o22o0anaaj8cf6emc4ttg36e2sc38.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ8snU-Q2zKr2diz28nDorhcCE-YquEB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339489684748-tm4o22o0anaaj8cf6emc4ttg36e2sc38.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
