@@ -3,18 +3,22 @@ package com.landalu.pickapic
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 
 class BiblioActivity : AppCompatActivity() {
     private val requestBiblio= 1001
+    var imageUri : Uri? = null
+    val listaImagenes = arrayListOf<Uri?>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_biblio)
+        abrirBtnBiblio()
     }
     private fun abrirBtnBiblio(){
 
@@ -57,9 +61,26 @@ class BiblioActivity : AppCompatActivity() {
         //startActivityForResult(intentBiblioteca, requestBiblio)
         val intentBiblio: Intent = Intent()
         intentBiblio.type= "image/*"
+        intentBiblio.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
         intentBiblio.setAction(Intent.ACTION_GET_CONTENT)
         startActivityForResult(Intent.createChooser(intentBiblio, "selecciona"), requestBiblio)
 //necesitamos saber si tenemos alguna respuesta para recuperar la imagen
 
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val clipData = data!!.clipData
+        if (resultCode == RESULT_OK && requestCode == requestBiblio) {
+            if (clipData == null) {
+                imageUri = data.data
+                listaImagenes.add(imageUri)
+            } else {
+                for (i in 0 until clipData.itemCount) {
+                    listaImagenes.add(clipData.getItemAt(i).uri)
+                }
+            }
+        }
+        /*baseAdapter = GridViewAdapter(this@MainActivity, listaImagenes)
+        gvImagenes.setAdapter(baseAdapter)*/
     }
 }
